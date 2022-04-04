@@ -3,7 +3,7 @@ function r = analyzeSubject(T, conditionNumbers)
 %conditionNumbers = unique(T.condition);
 numCond = length(conditionNumbers);
 
-T.correct = T.stimCategory == T.responseKey;
+T.correct = T.stimCategory = T.responseKey;
 
 %initialized a vector of NaNs to hold the proportion correct values for
 %each of the nCond conditions. 
@@ -17,7 +17,7 @@ for ci = 1:numCond
     conditionTrials = T.condition == conditionNumbers(ci);
 %     
 %     %2. pull out the correctness values for just these trials
-    conditionCorrect = T.correct(conditionTrials);
+    conditionCorrect = T.correct(conditionTrial);
 %     
 %     %3. compute the proportion correct for this condition by taking the
 %     %mean of the vector of 1s and 0s that define whether each trial was

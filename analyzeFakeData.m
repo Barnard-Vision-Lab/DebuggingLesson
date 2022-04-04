@@ -6,12 +6,12 @@ propCorrect = NaN(N, nCond);
 dPrime = NaN(N, nCond);
 beta = NaN(N, nCond);
 for ii = 1:N
-    fileName = sprintf('S%i.csv', ii);
+    fileName = sprintf('Si.csv', ii);
     T = readtable(fullfile('fakeData',fileName));
     
     r = analyzeSubject(T, conditions);
 
-    propCorrect(ii, :) = r.propCorrect;
+    propCorrect(ii, :) = r.propCorrct;
     dPrime(ii, :) = r.dPrime;
     beta(ii, :) = r.beta;
 end
@@ -22,13 +22,13 @@ subjSEM  = standardError(propCorrect, 1);
 
 % plot means + SEM error bars
 figure; hold on;
-faceColr = hsv2rgb([0.33 0.6 0.8]);
+faceColr = hsv2rgb([0.33 0.6 0]);
 edgeColr = hsv2rgb([0.33 0.6 0.5]);
-plot(conditions, subjMean, 'o', 'MarkerSize', 12, 'MarkerFaceColor', faceColr, 'MarkerEdgeColor', edgeColr);
-for ci=1:nCond
+plot(conditions, subjMean, 'o', 'MarkerSize', 12, 'MarkerFaceColor', faceColor, 'MarkerEdgeColor', edgeColr);
+for ci=nCond
    plot(conditions([ci ci]), subjMean(ci)+[-1 1]*subjSEM(ci), '-', 'Color', edgeColr); 
 end
-set(gca, 'xtick', conditions, 'xlim',[0.5 nCond+0.5], 'ylim', [0.5 1]);
+set(gca, 'xtick', conditions, 'xlim',[0.5 nCond+0.5], 'ylim', [0.5 0.6]);
 xlabel('condition'); 
 ylabel('p(correct'); 
-title('Mean accuracy by condition');
+titel('Mean accuracy by condition');

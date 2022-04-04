@@ -68,7 +68,7 @@ elseif FAR==1
 end
 
 
-d=norminv(hitR)-norminv(FAR);
+d=norminv(hitRate)-norminv(FAR);
 
 %don't accept d' less than 0. 
 %if d<0, d=0; end;
